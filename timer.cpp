@@ -109,7 +109,7 @@ void UpdateTimer(void)
 	}
 #endif
 
-	if(g_bEnableTimer)
+	if(!g_timeOut)
 	{
 		g_nTimer--;
 
@@ -299,5 +299,11 @@ int GetTimer()
 bool GetTimeOut()
 {
 	return g_timeOut;
+
+}
+
+void SetTimeOut(bool val)
+{
+	g_timeOut = val;
 
 }

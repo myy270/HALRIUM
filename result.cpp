@@ -10,6 +10,7 @@
 #include "input.h"
 #include "fade.h"
 #include "score.h"
+#include "mouse.h"
 
 //*****************************************************************************
 // マクロ定義
@@ -57,6 +58,11 @@ bool textureDecide;
 //=============================================================================
 HRESULT InitResult(void)
 {
+	for (int i = 0; i < MAX_MOUSE; i++)
+	{
+		(GetMouse() + i)->use = false;
+	}
+
 	g_textureBuff = NULL;
 
 	textureDecide = false;
@@ -125,6 +131,8 @@ void UninitResult(void)
 //=============================================================================
 void UpdateResult(void)
 {
+	
+
 	g_nCountAppearResult++;
 	if(g_nCountAppearResult >= COUNT_APPERA_RESULT)//60フレーム後に、浮き上がり始める
 	{

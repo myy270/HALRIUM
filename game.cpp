@@ -8,6 +8,8 @@
 #include "light.h"
 #include "basicScene.h"
 #include "mouse.h"
+#include "timer.h"
+#include "sound.h"
 
 #include "cancer.h"
 #include "sagittarius.h"
@@ -31,6 +33,11 @@
 //=============================================================================
 HRESULT InitGame(void)
 {
+	// タイマーの初期化
+	InitTimer();
+	ResetTimer(13);
+
+
 	InitLight();
 
 	InitBasicScene();
@@ -43,6 +50,9 @@ HRESULT InitGame(void)
 
 	InitPisces();
 
+	// BGM再生 ちゃんとloopできるにする!
+	PlaySound(SOUND_LABEL_BGM000, XAUDIO2_LOOP_INFINITE);
+
 	return S_OK;
 }
 
@@ -51,6 +61,9 @@ HRESULT InitGame(void)
 //=============================================================================
 void UninitGame(void)
 {
+	// タイマーの終了処理
+	UninitTimer();
+
 	UninitBasicScene();
 
 	UnintMouse();
@@ -61,8 +74,8 @@ void UninitGame(void)
 
 	UnintPisces();
 
-	// BGM停止 !!元の罠
-	//StopSound(SOUND_LABEL_BGM000);
+	// BGM停止
+	StopSound(SOUND_LABEL_BGM000);
 }
 
 //=============================================================================
@@ -80,6 +93,8 @@ void UpdateGame(void)
 
 	UpdatePisces();
 
+	// タイマー処理の更新
+	UpdateTimer();
 
 }
 
@@ -97,6 +112,9 @@ void DrawGame(void)
 	//DrawPisces();
 
 	DrawMouse();
+
+	// タイマー処理の描画
+	DrawTimer();
 
 }
 

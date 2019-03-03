@@ -445,3 +445,9 @@ OBJECT GetWinner()
 	return g_winner;
 
 }
+
+ void SetWinner(OBJECT val)
+{
+	g_winner = val;
+
+}

@@ -23,4 +23,6 @@ void ChangeScore2(int value);//プレイヤーの
 void compScore(); //プレイヤー勝つ場合true 
 
 OBJECT GetWinner();
+void SetWinner(OBJECT val);
+
 #endif

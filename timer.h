@@ -22,5 +22,6 @@ void ResetTimer(int nTime = 999);
 
 int GetTimer();
 bool GetTimeOut();
+void SetTimeOut(bool val);
 
 #endif

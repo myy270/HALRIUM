@@ -7,6 +7,7 @@
 #include "fade.h"
 #include "timer.h"
 #include "score.h"
+#include "title.h"
 
 //*****************************************************************************
 // マクロ定義
@@ -84,7 +85,23 @@ void UpdateFade(void)
 
 				if (GetTimeOut() == 1)
 				{
-					compScore();//スコアを比較する
+					if (GetPlayMode() == PLAY_MODE_SINGLE)
+					{
+						if (GetTimer() != 0)
+						{
+							SetWinner(OBJECT_PLAYER);
+						}
+						else
+						{
+							SetWinner(OBJECT_ENEMY);
+						}
+					}
+					else
+					{
+						compScore();//スコアを比較する
+					}
+
+
 
 				}
 			}
