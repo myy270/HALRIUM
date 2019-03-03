@@ -35,7 +35,7 @@ HRESULT InitGame(void)
 {
 	// É^ÉCÉ}Å[ÇÃèâä˙âª
 	InitTimer();
-	ResetTimer(13);
+	ResetTimer();
 
 
 	InitLight();
@@ -103,7 +103,7 @@ void UpdateGame(void)
 //=============================================================================
 void DrawGame(void)
 {
-	//DrawBasicScene();//îwåi
+	DrawBasicScene();//îwåi
 
 	//DrawCancer();
 
