@@ -13,22 +13,24 @@
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
-#define	TEXTURE_TITLE		"data/TEXTURE/bg000.jpg"		// 読み込むテクスチャファイル名
-#define	TEXTURE_TITLE_LOGO	"data/TEXTURE/mainvisual_logo.png"		// 読み込むテクスチャファイル名
+#define	TEXTURE_TITLE_BG		"data/TEXTURE/bg000.jpg"		// 読み込むテクスチャファイル名
+#define	TEXTURE_TITLE_LOGO	"data/TEXTURE/HALRIUM_title3.png"		// 読み込むテクスチャファイル名
 #define	TEXTURE_LOGO_START	"data/TEXTURE/press_enter.png"	// 読み込むテクスチャファイル名
 #define	TEXTURE_1P2P		"data/TEXTURE/1p2p.png"			// 読み込むテクスチャファイル名
 
 
 
-#define	TITLE_LOGO_POS_X		(SCREEN_WIDTH * 0.25f)		// タイトルロゴの位置(X座標) 320
-#define	TITLE_LOGO_POS_Y		(150)		// タイトルロゴの位置(Y座標)
-#define	TITLE_LOGO_WIDTH		(658)		// タイトルロゴの幅
-#define	TITLE_LOGO_HEIGHT		(332)		// タイトルロゴの高さ
+#define	TITLE_LOGO_WIDTH		(704 * 1.1f)		// タイトルロゴの幅
+#define	TITLE_LOGO_HEIGHT		(396 * 1.1f)		// タイトルロゴの高さ
 
-#define	START_POS_X				(SCREEN_WIDTH * 0.3325f)		// スタートボタンの位置(X座標) 400
-#define	START_POS_Y				(SCREEN_HEIGHT * 0.75f)		// スタートボタンの位置(Y座標) 720
+#define	TITLE_LOGO_POS_X		((SCREEN_WIDTH - TITLE_LOGO_WIDTH) / 2)		// タイトルロゴの位置(X座標) 320
+#define	TITLE_LOGO_POS_Y		(70)		// タイトルロゴの位置(Y座標)
+
+
 #define	START_WIDTH				(480)		// スタートボタンの幅
 #define	START_HEIGHT			(120)		// スタートボタンの高さ
+#define	START_POS_X				((SCREEN_WIDTH - START_WIDTH) / 2)		// スタートボタンの位置(X座標) 400
+#define	START_POS_Y				(SCREEN_HEIGHT * 0.75f)		// スタートボタンの位置(Y座標) 720
 
 
 #define	ONETWO_POS_X			(SCREEN_WIDTH * 0.25f)		// スタートボタンの位置(X座標) 400
@@ -105,7 +107,7 @@ HRESULT InitTitle(void)
 
 	// テクスチャの読み込み
 	D3DXCreateTextureFromFile(pDevice,						// デバイスへのポインタ
-								TEXTURE_TITLE,				// ファイルの名前
+								TEXTURE_TITLE_BG,				// ファイルの名前
 								&g_pD3DTextureTitle);		// 読み込むメモリー
 
 	D3DXCreateTextureFromFile(pDevice,						// デバイスへのポインタ
