@@ -7,6 +7,7 @@
 #include "game.h"
 #include "light.h"
 #include "basicScene.h"
+#include "particleStar.h"
 #include "mouse.h"
 #include "timer.h"
 #include "sound.h"
@@ -37,11 +38,6 @@ HRESULT InitGame(void)
 	InitTimer();
 	ResetTimer();
 
-
-	InitLight();
-
-	InitBasicScene();
-
 	InitMouse();
 
 	InitCancer();
@@ -66,6 +62,8 @@ void UninitGame(void)
 
 	UninitBasicScene();
 
+	UninitParticleStar();
+
 	UnintMouse();
 
 	UnintCancer();
@@ -84,6 +82,7 @@ void UninitGame(void)
 void UpdateGame(void)
 {
 	UpdateBasicScene();
+	UpdateParticleStar();
 
 	UpdateMouse();
 
@@ -104,6 +103,7 @@ void UpdateGame(void)
 void DrawGame(void)
 {
 	DrawBasicScene();//îwåi
+	DrawParticleStar();
 
 	//DrawCancer();
 

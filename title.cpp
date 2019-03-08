@@ -7,7 +7,9 @@
 #include "title.h"
 #include "input.h"
 #include "fade.h"
-
+#include "light.h"
+#include "basicScene.h"
+#include "particleStar.h"
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
@@ -78,6 +80,12 @@ PLAY_MODE g_playMode;
 //=============================================================================
 HRESULT InitTitle(void)
 {
+	InitLight();//3D描画の前にやらなければいけない!!
+
+	InitBasicScene();
+
+	InitParticleStar();
+
 	g_playMode = PLAY_MODE_SINGLE;//デフォルト設定
 
 	g_onetwoUI = false;
@@ -176,6 +184,8 @@ void UninitTitle(void)
 //=============================================================================
 void UpdateTitle(void)
 {
+	UpdateBasicScene();
+	UpdateParticleStar();
 
 	if(g_fAlphaLogo < 1.0f)
 	{
@@ -272,17 +282,20 @@ void DrawTitle(void)
 {
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	// 頂点バッファをデバイスのデータストリームにバインド
-    pDevice->SetStreamSource(0, g_pD3DVtxBuffTitle, 0, sizeof(VERTEX_2D));
+	DrawBasicScene();//背景
+	DrawParticleStar();
 
-	// 頂点フォーマットの設定
-	pDevice->SetFVF(FVF_VERTEX_2D);
+	//// 頂点バッファをデバイスのデータストリームにバインド
+	//pDevice->SetStreamSource(0, g_pD3DVtxBuffTitle, 0, sizeof(VERTEX_2D));
 
-	// テクスチャの設定
-	pDevice->SetTexture(0, g_pD3DTextureTitle);
+	//// 頂点フォーマットの設定
+	//pDevice->SetFVF(FVF_VERTEX_2D);
 
-	// ポリゴンの描画
-	pDevice->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, NUM_POLYGON);
+	//// テクスチャの設定
+	//pDevice->SetTexture(0, g_pD3DTextureTitle);
+
+	//// ポリゴンの描画
+	//pDevice->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, NUM_POLYGON);
 
 	if (!g_onetwoUI)
 	{//タイトルロゴとエンターロゴの表示
