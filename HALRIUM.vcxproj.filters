@@ -13,12 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ソース ファイル\seiza">
+      <UniqueIdentifier>{5efb7a66-0ed0-457e-8a15-730ce0d49003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\seiza">
+      <UniqueIdentifier>{2fd952ad-e670-4fc8-8822-4851e5504523}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="basicScene.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="helper.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="light.cpp">
@@ -28,15 +31,6 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="mouse.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="cancer.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="sagittarius.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="pisces.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="title.cpp">
@@ -69,12 +63,60 @@
     <ClCompile Include="particleStar.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="seiza.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Aquarius.cpp">
+      <Filter>ソース ファイル\seiza</Filter>
+    </ClCompile>
+    <ClCompile Include="Aries.cpp">
+      <Filter>ソース ファイル\seiza</Filter>
+    </ClCompile>
+    <ClCompile Include="Cancer.cpp">
+      <Filter>ソース ファイル\seiza</Filter>
+    </ClCompile>
+    <ClCompile Include="Virgo.cpp">
+      <Filter>ソース ファイル\seiza</Filter>
+    </ClCompile>
+    <ClCompile Include="Taurus.cpp">
+      <Filter>ソース ファイル\seiza</Filter>
+    </ClCompile>
+    <ClCompile Include="Scorpio.cpp">
+      <Filter>ソース ファイル\seiza</Filter>
+    </ClCompile>
+    <ClCompile Include="Sagittarius.cpp">
+      <Filter>ソース ファイル\seiza</Filter>
+    </ClCompile>
+    <ClCompile Include="Pisces.cpp">
+      <Filter>ソース ファイル\seiza</Filter>
+    </ClCompile>
+    <ClCompile Include="Gemini.cpp">
+      <Filter>ソース ファイル\seiza</Filter>
+    </ClCompile>
+    <ClCompile Include="Capricorn.cpp">
+      <Filter>ソース ファイル\seiza</Filter>
+    </ClCompile>
+    <ClCompile Include="Leo.cpp">
+      <Filter>ソース ファイル\seiza</Filter>
+    </ClCompile>
+    <ClCompile Include="Libra.cpp">
+      <Filter>ソース ファイル\seiza</Filter>
+    </ClCompile>
+    <ClCompile Include="score_effect.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="seizaEffect.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="stack.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="starEffect.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="basicScene.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="helper.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="light.h">
@@ -84,15 +126,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="mouse.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="cancer.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="sagittarius.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="pisces.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="title.h">
@@ -123,6 +156,57 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="particleStar.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="seiza.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Virgo.h">
+      <Filter>ヘッダー ファイル\seiza</Filter>
+    </ClInclude>
+    <ClInclude Include="Taurus.h">
+      <Filter>ヘッダー ファイル\seiza</Filter>
+    </ClInclude>
+    <ClInclude Include="Scorpio.h">
+      <Filter>ヘッダー ファイル\seiza</Filter>
+    </ClInclude>
+    <ClInclude Include="Sagittarius.h">
+      <Filter>ヘッダー ファイル\seiza</Filter>
+    </ClInclude>
+    <ClInclude Include="Pisces.h">
+      <Filter>ヘッダー ファイル\seiza</Filter>
+    </ClInclude>
+    <ClInclude Include="Libra.h">
+      <Filter>ヘッダー ファイル\seiza</Filter>
+    </ClInclude>
+    <ClInclude Include="Leo.h">
+      <Filter>ヘッダー ファイル\seiza</Filter>
+    </ClInclude>
+    <ClInclude Include="Gemini.h">
+      <Filter>ヘッダー ファイル\seiza</Filter>
+    </ClInclude>
+    <ClInclude Include="Capricorn.h">
+      <Filter>ヘッダー ファイル\seiza</Filter>
+    </ClInclude>
+    <ClInclude Include="Cancer.h">
+      <Filter>ヘッダー ファイル\seiza</Filter>
+    </ClInclude>
+    <ClInclude Include="Aries.h">
+      <Filter>ヘッダー ファイル\seiza</Filter>
+    </ClInclude>
+    <ClInclude Include="Aquarius.h">
+      <Filter>ヘッダー ファイル\seiza</Filter>
+    </ClInclude>
+    <ClInclude Include="starEffect.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="stack.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="seizaEffect.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="score_effect.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

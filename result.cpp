@@ -101,6 +101,8 @@ HRESULT InitResult(void)
 //=============================================================================
 void UninitResult(void)
 {
+
+
 	if(g_pD3DTextureResult != NULL)
 	{// テクスチャの開放
 		g_pD3DTextureResult->Release();

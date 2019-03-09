@@ -25,4 +25,7 @@ void compScore(); //ƒvƒŒƒCƒ„[Ÿ‚Âê‡true
 OBJECT GetWinner();
 void SetWinner(OBJECT val);
 
+int GetScore2();
+int GetScore();
+
 #endif

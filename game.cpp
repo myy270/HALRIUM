@@ -12,9 +12,24 @@
 #include "timer.h"
 #include "sound.h"
 
-#include "cancer.h"
-#include "sagittarius.h"
-#include "pisces.h"
+#include "starEffect.h"
+#include "stack.h"
+#include "seizaEffect.h"
+#include "score.h"
+#include "score_effect.h"
+
+#include "Aries.h"
+#include "Taurus.h"
+#include "Gemini.h"
+#include "Cancer.h"
+#include "Leo.h"
+#include "Virgo.h"
+#include "Libra.h"
+#include "Scorpio.h"
+#include "Sagittarius.h"
+#include "Capricorn.h"
+#include "Aquarius.h"
+#include "Pisces.h"
 
 //*****************************************************************************
 // マクロ定義
@@ -38,13 +53,33 @@ HRESULT InitGame(void)
 	InitTimer();
 	ResetTimer();
 
-	InitMouse();
+	{
+		InitAri();
+		InitTau();
+		InitGem();
+		InitCan();
+		InitLeo();
+		InitVir();
+		InitLib();
+		InitSco();
+		InitSag();
+		InitCap();
+		InitAqu();
+		InitPis();
+	}
 
-	InitCancer();
+	InitMouse();	// マウスの初期化は必ず星座の後
 
-	InitSagittarius();
+	InitStarEffect(0);
 
-	InitPisces();
+	InitSeizaEffect(0);//星座の後
+
+	InitStack(0);
+
+	InitScore();
+
+	InitBezier_Particle();
+
 
 	// BGM再生 ちゃんとloopできるにする!
 	PlaySound(SOUND_LABEL_BGM000, XAUDIO2_LOOP_INFINITE);
@@ -64,13 +99,28 @@ void UninitGame(void)
 
 	UninitParticleStar();
 
-	UnintMouse();
+	UninitMouse2();
 
-	UnintCancer();
+	{
+		UninitAri();
+		UninitTau();
+		UninitGem();
+		UninitCan();
+		UninitLeo();
+		UninitVir();
+		UninitLib();
+		UninitSco();
+		UninitSag();
+		UninitCap();
+		UninitAqu();
+		UninitPis();
+	}
 
-	UnintSagittarius();
-
-	UnintPisces();
+	UninitStarEffect();
+	UninitSeizaEffect();
+	UninitStack();
+	UninitScore();
+	UninitBezier_Particle();
 
 	// BGM停止
 	StopSound(SOUND_LABEL_BGM000);
@@ -86,11 +136,29 @@ void UpdateGame(void)
 
 	UpdateMouse();
 
-	UpdateCancer();
+	{
+		UpdateAri();
+		UpdateTau();
+		UpdateGem();
+		UpdateCan();
+		UpdateLeo();
+		UpdateVir();
+		UpdateLib();
+		UpdateSco();
+		UpdateSag();
+		UpdateCap();
+		UpdateAqu();
+		UpdatePis();
+	}
 
-	UpdateSagittarius();
+	UpdateStarEffect();
+	UpdateSeizaEffect();//星座の後ろに置く
 
-	UpdatePisces();
+	UpdateStack();//星座の後ろに置く
+
+	UpdateScore();
+
+	UpdateBezier_Particle();
 
 	// タイマー処理の更新
 	UpdateTimer();
@@ -102,19 +170,35 @@ void UpdateGame(void)
 //=============================================================================
 void DrawGame(void)
 {
-	DrawBasicScene();//背景
-	DrawParticleStar();
+	DrawBasicScene();//z 80
+	DrawParticleStar();//z 1~50
 
-	//DrawCancer();
+	DrawSeizaEffect();//z 0
 
-	DrawSagittarius();
+	{
+		DrawAri();
+		DrawTau();
+		DrawGem();
+		DrawCan();
+		DrawLeo();
+		DrawVir();
+		DrawLib();
+		DrawSco();
+		DrawSag();
+		DrawCap();
+		DrawAqu();
+		DrawPis();
+	}
 
-	//DrawPisces();
+	DrawStarEffect();//星座の後に置く
 
 	DrawMouse();
 
-	// タイマー処理の描画
-	DrawTimer();
+	DrawScore();//2D描画
+	DrawTimer();//2D描画
+	DrawStack();//2D描画
 
+
+	DrawBezier_Particle();
 }
 

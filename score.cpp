@@ -5,16 +5,16 @@
 //
 //=============================================================================
 #include "score.h"
-#include "title.h"
+//#include "title.h"
 
 
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
-#define	TEXTURE_SCORE		"data/TEXTURE/number000.png"	// 読み込むテクスチャファイル名
+#define	TEXTURE_SCORE		"data/TEXTURE/num.png"	// 読み込むテクスチャファイル名
 #define	TEXTURE_FRAME_SCORE	"data/TEXTURE/frame_score.png"	// 読み込むテクスチャファイル名
-#define	SCORE_SIZE_X		(35.0f)							// スコアの数字の幅
-#define	SCORE_SIZE_Y		(50.0f)							// スコアの数字の高さ
+#define	SCORE_SIZE_X		(72.2f * 0.7f)							// スコアの数字の幅
+#define	SCORE_SIZE_Y		(76.0f * 0.7f)							// スコアの数字の高さ
 #define	SCORE_INTERVAL_X	(0.0f)							// スコアの数字の表示間隔
 
 #define	NUM_PLACE			(5)								// スコアの桁数
@@ -221,10 +221,10 @@ HRESULT MakeVertexScore(LPDIRECT3DDEVICE9 pDevice)
 			pVtx[3].rhw = 1.0f;
 
 			// 反射光の設定
-			pVtx[0].diffuse = D3DCOLOR_RGBA(255, 170, 192, 255);//ピンク
-			pVtx[1].diffuse = D3DCOLOR_RGBA(255, 170, 192, 255);
-			pVtx[2].diffuse = D3DCOLOR_RGBA(255, 170, 192, 255);
-			pVtx[3].diffuse = D3DCOLOR_RGBA(255, 170, 192, 255);
+			pVtx[0].diffuse = D3DXCOLOR(0.3f, 1.0f, 1.0f, 1.0f);
+			pVtx[1].diffuse = D3DXCOLOR(0.3f, 1.0f, 1.0f, 1.0f);
+			pVtx[2].diffuse = D3DXCOLOR(0.3f, 1.0f, 1.0f, 1.0f);
+			pVtx[3].diffuse = D3DXCOLOR(0.3f, 1.0f, 1.0f, 1.0f);
 
 			// テクスチャ座標の設定
 			pVtx[0].tex = D3DXVECTOR2(0.0f, 0.0f);
@@ -235,10 +235,10 @@ HRESULT MakeVertexScore(LPDIRECT3DDEVICE9 pDevice)
 
 		{//フレームの頂点
 			// 頂点座標の設定
-			pVtx[0].vtx = D3DXVECTOR3(SCORE_POS_X - 15, SCORE_POS_Y-25, 0.0f);
-			pVtx[1].vtx = D3DXVECTOR3(SCORE_POS_X + (SCORE_INTERVAL_X + SCORE_SIZE_X) * NUM_PLACE + 15, SCORE_POS_Y - 25, 0.0f);
-			pVtx[2].vtx = D3DXVECTOR3(SCORE_POS_X - 15, SCORE_POS_Y + 55, 0.0f);
-			pVtx[3].vtx = D3DXVECTOR3(SCORE_POS_X + (SCORE_INTERVAL_X + SCORE_SIZE_X) * NUM_PLACE + 15, SCORE_POS_Y + 55, 0.0f);
+			pVtx[0].vtx = D3DXVECTOR3(SCORE_POS_X - 15, SCORE_POS_Y - 15, 0.0f);
+			pVtx[1].vtx = D3DXVECTOR3(SCORE_POS_X + (SCORE_INTERVAL_X + SCORE_SIZE_X) * NUM_PLACE + 15, SCORE_POS_Y - 15, 0.0f);
+			pVtx[2].vtx = D3DXVECTOR3(SCORE_POS_X - 15, SCORE_POS_Y + SCORE_SIZE_Y + 5, 0.0f);
+			pVtx[3].vtx = D3DXVECTOR3(SCORE_POS_X + (SCORE_INTERVAL_X + SCORE_SIZE_X) * NUM_PLACE + 15, SCORE_POS_Y + SCORE_SIZE_Y + 5, 0.0f);
 
 			// rhwの設定
 			pVtx[0].rhw =
@@ -247,10 +247,10 @@ HRESULT MakeVertexScore(LPDIRECT3DDEVICE9 pDevice)
 			pVtx[3].rhw = 1.0f;
 
 			// 反射光の設定
-			pVtx[0].diffuse = D3DCOLOR_RGBA(255, 170, 192, 255);//ピンク
-			pVtx[1].diffuse = D3DCOLOR_RGBA(255, 170, 192, 255);
-			pVtx[2].diffuse = D3DCOLOR_RGBA(255, 170, 192, 255);
-			pVtx[3].diffuse = D3DCOLOR_RGBA(255, 170, 192, 255);
+			pVtx[0].diffuse = D3DXCOLOR(0.3f, 1.0f, 1.0f, 1.0f);
+			pVtx[1].diffuse = D3DXCOLOR(0.3f, 1.0f, 1.0f, 1.0f);
+			pVtx[2].diffuse = D3DXCOLOR(0.3f, 1.0f, 1.0f, 1.0f);
+			pVtx[3].diffuse = D3DXCOLOR(0.3f, 1.0f, 1.0f, 1.0f);
 
 			// テクスチャ座標の設定
 			pVtx[0].tex = D3DXVECTOR2(0.0f, 0.0f);
@@ -301,10 +301,10 @@ HRESULT MakeVertexScore2(LPDIRECT3DDEVICE9 pDevice)
 			pVtx[3].rhw = 1.0f;
 
 			// 反射光の設定
-			pVtx[0].diffuse = D3DXCOLOR(1.0f, 0.7f, 0.0f, 1.0f);//オレンジ
-			pVtx[1].diffuse = D3DXCOLOR(1.0f, 0.7f, 0.0f, 1.0f);
-			pVtx[2].diffuse = D3DXCOLOR(1.0f, 0.7f, 0.0f, 1.0f);
-			pVtx[3].diffuse = D3DXCOLOR(1.0f, 0.7f, 0.0f, 1.0f);
+			pVtx[0].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, 1.0f);
+			pVtx[1].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, 1.0f);
+			pVtx[2].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, 1.0f);
+			pVtx[3].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, 1.0f);
 
 			// テクスチャ座標の設定
 			pVtx[0].tex = D3DXVECTOR2(0.0f, 0.0f);
@@ -315,10 +315,10 @@ HRESULT MakeVertexScore2(LPDIRECT3DDEVICE9 pDevice)
 
 		{//フレームの頂点
 			// 頂点座標の設定
-			pVtx[0].vtx = D3DXVECTOR3(SCORE_POS_X2 - 15, SCORE_POS_Y-25, 0.0f);
-			pVtx[1].vtx = D3DXVECTOR3(SCORE_POS_X2 + (SCORE_INTERVAL_X + SCORE_SIZE_X) * NUM_PLACE + 15, SCORE_POS_Y - 25, 0.0f);
-			pVtx[2].vtx = D3DXVECTOR3(SCORE_POS_X2 - 15, SCORE_POS_Y + 55, 0.0f);
-			pVtx[3].vtx = D3DXVECTOR3(SCORE_POS_X2 + (SCORE_INTERVAL_X + SCORE_SIZE_X) * NUM_PLACE + 15, SCORE_POS_Y + 55, 0.0f);
+			pVtx[0].vtx = D3DXVECTOR3(SCORE_POS_X2 - 15, SCORE_POS_Y - 15, 0.0f);
+			pVtx[1].vtx = D3DXVECTOR3(SCORE_POS_X2 + (SCORE_INTERVAL_X + SCORE_SIZE_X) * NUM_PLACE + 15, SCORE_POS_Y - 15, 0.0f);
+			pVtx[2].vtx = D3DXVECTOR3(SCORE_POS_X2 - 15, SCORE_POS_Y + SCORE_SIZE_Y + 5, 0.0f);
+			pVtx[3].vtx = D3DXVECTOR3(SCORE_POS_X2 + (SCORE_INTERVAL_X + SCORE_SIZE_X) * NUM_PLACE + 15, SCORE_POS_Y + SCORE_SIZE_Y + 5, 0.0f);
 
 			// rhwの設定
 			pVtx[0].rhw =
@@ -327,10 +327,10 @@ HRESULT MakeVertexScore2(LPDIRECT3DDEVICE9 pDevice)
 			pVtx[3].rhw = 1.0f;
 
 			// 反射光の設定
-			pVtx[0].diffuse = D3DXCOLOR(1.0f, 0.7f, 0.0f, 1.0f);//オレンジ
-			pVtx[1].diffuse = D3DXCOLOR(1.0f, 0.7f, 0.0f, 1.0f);
-			pVtx[2].diffuse = D3DXCOLOR(1.0f, 0.7f, 0.0f, 1.0f);
-			pVtx[3].diffuse = D3DXCOLOR(1.0f, 0.7f, 0.0f, 1.0f);
+			pVtx[0].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, 1.0f);
+			pVtx[1].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, 1.0f);
+			pVtx[2].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, 1.0f);
+			pVtx[3].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, 1.0f);
 
 			// テクスチャ座標の設定
 			pVtx[0].tex = D3DXVECTOR2(0.0f, 0.0f);
@@ -388,7 +388,7 @@ void SetTextureScore2(int idx, int number)
 	g_pD3DVtxBuffScore2->Unlock();
 }
 //=============================================================================
-// スコアの変更
+// 敵のスコアの変更
 //=============================================================================
 void ChangeScore(int value)
 {
@@ -420,23 +420,23 @@ void ChangeScore2(int value)
 
 void compScore()
 {
-	if (g_score2 >= g_score)
-	{//プレイヤー勝つ場合
+	//if (g_score2 >= g_score)
+	//{//プレイヤー勝つ場合
 
-		
-		g_winner = OBJECT_PLAYER;
-	}
-	else
-	{//プレイヤー負ける
+	//	
+	//	g_winner = OBJECT_PLAYER;
+	//}
+	//else
+	//{//プレイヤー負ける
 
-		if (GetPlayMode() == PLAY_MODE_DOUBLE)
-		{//2pの場合、2pにカットシーン
-		
-			g_winner = OBJECT_ENEMY;
-		}
+	//	if (GetPlayMode() == PLAY_MODE_DOUBLE)
+	//	{//2pの場合、2pにカットシーン
+	//	
+	//		g_winner = OBJECT_ENEMY;
+	//	}
 
 
-	}
+	//}
 
 }
 
@@ -446,8 +446,21 @@ OBJECT GetWinner()
 
 }
 
- void SetWinner(OBJECT val)
+void SetWinner(OBJECT val)
 {
 	g_winner = val;
 
 }
+
+
+int GetScore2(void)
+ {
+	return g_score2;
+
+ }
+
+int GetScore(void)
+ {
+	return g_score;
+
+ }
