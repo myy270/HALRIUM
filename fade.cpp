@@ -85,24 +85,7 @@ void UpdateFade(void)
 
 				if (GetTimeOut() == 1)
 				{
-					if (GetPlayMode() == PLAY_MODE_SINGLE)
-					{
-						if (GetTimer() != 0)
-						{
-							SetWinner(OBJECT_PLAYER);
-						}
-						else
-						{
-							SetWinner(OBJECT_ENEMY);
-						}
-					}
-					else
-					{
 						compScore();//ÉXÉRÉAÇî‰ärÇ∑ÇÈ
-					}
-
-
-
 				}
 			}
 

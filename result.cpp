@@ -17,8 +17,8 @@
 //*****************************************************************************
 #define	TEXTURE_RESULT			"data/TEXTURE/bg001.jpg"		// 読み込むテクスチャファイル名
 
-#define	TEXTURE_RESULT_LOGO		"data/TEXTURE/win_logo.png"		// 勝つ テクスチャファイル名
-#define	TEXTURE_RESULT_LOGO_2	"data/TEXTURE/over_logo.png"	// 負ける テクスチャファイル名
+#define	TEXTURE_RESULT_LOGO		"data/TEXTURE/player01.png"		// 勝つ テクスチャファイル名
+#define	TEXTURE_RESULT_LOGO_2	"data/TEXTURE/player02.png"	// 負ける テクスチャファイル名
 
 
 

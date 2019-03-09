@@ -224,33 +224,13 @@ void UpdateTitle(void)
 
 			g_nCountAppearStart = COUNT_APPERA_START;
 		}
-		else if(!g_onetwoUI)
-		{
-			//1p2p UIに入る
-			g_onetwoUI = true;
-			g_pD3DTextureTitleLogo = NULL;
-			g_pD3DTextureStart = NULL;
-
-
-		}
-		//else
-		//{
-		//	// ゲームへ
-		//	SetFade(FADE_OUT);//MODE が　GAME に変換　
-
-		//}
-	}
-
-	if (g_onetwoUI)
-	{
-		if (GetKeyboardTrigger(DIK_SPACE) || IsButtonTrigger(0, BUTTON_CIRCLE))
+		else
 		{
 			// ゲームへ
 			SetFade(FADE_OUT);//MODE が　GAME に変換　
+
 		}
 	}
-
-
 
 	if (g_onetwoUI)
 	{

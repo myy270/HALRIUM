@@ -420,24 +420,14 @@ void ChangeScore2(int value)
 
 void compScore()
 {
-	//if (g_score2 >= g_score)
-	//{//プレイヤー勝つ場合
-
-	//	
-	//	g_winner = OBJECT_PLAYER;
-	//}
-	//else
-	//{//プレイヤー負ける
-
-	//	if (GetPlayMode() == PLAY_MODE_DOUBLE)
-	//	{//2pの場合、2pにカットシーン
-	//	
-	//		g_winner = OBJECT_ENEMY;
-	//	}
-
-
-	//}
-
+	if (g_score2 >= g_score)
+	{//p1勝つ場合		
+		g_winner = OBJECT_PLAYER;
+	}
+	else
+	{//p2勝つ場合		
+		g_winner = OBJECT_ENEMY;
+	}
 }
 
 OBJECT GetWinner()

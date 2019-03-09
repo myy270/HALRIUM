@@ -11,10 +11,10 @@
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
-#define	TEXTURE_TIMER		"data/TEXTURE/number000.png"	// 読み込むテクスチャファイル名
+#define	TEXTURE_TIMER		"data/TEXTURE/num.png"	// 読み込むテクスチャファイル名
 #define	TEXTURE_FRAME_TIMER	"data/TEXTURE/frame_timer.png"	// 読み込むテクスチャファイル名
-#define	TIMER_SIZE_X		(35.0f)							// タイマーの数字の幅
-#define	TIMER_SIZE_Y		(50.0f)							// タイマーの数字の高さ
+#define	TIMER_SIZE_X		(72.2f * 0.7f)							// タイマーの数字の幅
+#define	TIMER_SIZE_Y		(76.0f * 0.7f)							// タイマーの数字の高さ
 #define	TIMER_INTERVAL_X	(0.0f)							// タイマーの数字の表示間隔
 
 #define	NUM_PLACE			(3)			// タイマーの桁数
@@ -209,10 +209,10 @@ HRESULT MakeVertexTimer(LPDIRECT3DDEVICE9 pDevice)
 			pVtx[3].rhw = 1.0f;
 
 			// 反射光の設定
-			pVtx[0].diffuse = D3DCOLOR_RGBA(0, 255, 255, 255);
-			pVtx[1].diffuse = D3DCOLOR_RGBA(0, 255, 255, 255);
-			pVtx[2].diffuse = D3DCOLOR_RGBA(0, 255, 255, 255);
-			pVtx[3].diffuse = D3DCOLOR_RGBA(0, 255, 255, 255);
+			pVtx[0].diffuse = D3DCOLOR_RGBA(255, 255, 0, 255);
+			pVtx[1].diffuse = D3DCOLOR_RGBA(255, 255, 0, 255);
+			pVtx[2].diffuse = D3DCOLOR_RGBA(255, 255, 0, 255);
+			pVtx[3].diffuse = D3DCOLOR_RGBA(255, 255, 0, 255);
 
 			// テクスチャ座標の設定
 			pVtx[0].tex = D3DXVECTOR2(0.0f, 0.0f);
@@ -222,10 +222,10 @@ HRESULT MakeVertexTimer(LPDIRECT3DDEVICE9 pDevice)
 		}
 
 		// 頂点座標の設定
-		pVtx[0].vtx = D3DXVECTOR3(TIMER_POS_X - 17.5f, TIMER_POS_Y - 25, 0.0f);
-		pVtx[1].vtx = D3DXVECTOR3(TIMER_POS_X + (TIMER_INTERVAL_X + TIMER_SIZE_X) * (NUM_PLACE - 1) + TIMER_SIZE_X + 17.5f, TIMER_POS_Y - 25, 0.0f);
-		pVtx[2].vtx = D3DXVECTOR3(TIMER_POS_X - 17.5f, TIMER_POS_Y + 55, 0.0f);
-		pVtx[3].vtx = D3DXVECTOR3(TIMER_POS_X + (TIMER_INTERVAL_X + TIMER_SIZE_X) * (NUM_PLACE - 1) + TIMER_SIZE_X + 17.5f, TIMER_POS_Y + 55, 0.0f);
+		pVtx[0].vtx = D3DXVECTOR3(TIMER_POS_X - 15.0f, TIMER_POS_Y - 15, 0.0f);
+		pVtx[1].vtx = D3DXVECTOR3(TIMER_POS_X + (TIMER_INTERVAL_X + TIMER_SIZE_X) * (NUM_PLACE - 1) + TIMER_SIZE_X + 15.0f, TIMER_POS_Y - 15, 0.0f);
+		pVtx[2].vtx = D3DXVECTOR3(TIMER_POS_X - 15.0f, TIMER_POS_Y + TIMER_SIZE_Y + 5, 0.0f);
+		pVtx[3].vtx = D3DXVECTOR3(TIMER_POS_X + (TIMER_INTERVAL_X + TIMER_SIZE_X) * (NUM_PLACE - 1) + TIMER_SIZE_X + 15.0f, TIMER_POS_Y + TIMER_SIZE_Y + 5, 0.0f);
 
 		// rhwの設定
 		pVtx[0].rhw =
@@ -234,10 +234,10 @@ HRESULT MakeVertexTimer(LPDIRECT3DDEVICE9 pDevice)
 		pVtx[3].rhw = 1.0f;
 
 		// 反射光の設定
-		pVtx[0].diffuse = D3DCOLOR_RGBA(0, 255, 255, 255);//シアン
-		pVtx[1].diffuse = D3DCOLOR_RGBA(0, 255, 255, 255);
-		pVtx[2].diffuse = D3DCOLOR_RGBA(0, 255, 255, 255);
-		pVtx[3].diffuse = D3DCOLOR_RGBA(0, 255, 255, 255);
+		pVtx[0].diffuse = D3DCOLOR_RGBA(255, 255, 0, 255);//シアン
+		pVtx[1].diffuse = D3DCOLOR_RGBA(255, 255, 0, 255);
+		pVtx[2].diffuse = D3DCOLOR_RGBA(255, 255, 0, 255);
+		pVtx[3].diffuse = D3DCOLOR_RGBA(255, 255, 0, 255);
 
 		// テクスチャ座標の設定
 		pVtx[0].tex = D3DXVECTOR2(0.0f, 0.0f);
