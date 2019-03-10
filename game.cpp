@@ -82,7 +82,7 @@ HRESULT InitGame(void)
 
 
 	// BGMçƒê∂ ÇøÇ·ÇÒÇ∆loopÇ≈Ç´ÇÈÇ…Ç∑ÇÈ!
-	PlaySound(SOUND_LABEL_BGM000, XAUDIO2_LOOP_INFINITE);
+	PlaySound(SOUND_LABEL_BGM001, XAUDIO2_LOOP_INFINITE);
 
 	return S_OK;
 }
@@ -123,7 +123,7 @@ void UninitGame(void)
 	UninitBezier_Particle();
 
 	// BGMí‚é~
-	StopSound(SOUND_LABEL_BGM000);
+	StopSound(SOUND_LABEL_BGM001);
 }
 
 //=============================================================================

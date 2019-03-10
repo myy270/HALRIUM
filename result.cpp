@@ -17,15 +17,15 @@
 //*****************************************************************************
 #define	TEXTURE_RESULT			"data/TEXTURE/bg001.jpg"		// 読み込むテクスチャファイル名
 
-#define	TEXTURE_RESULT_LOGO		"data/TEXTURE/player01.png"		// 勝つ テクスチャファイル名
-#define	TEXTURE_RESULT_LOGO_2	"data/TEXTURE/player02.png"	// 負ける テクスチャファイル名
+#define	TEXTURE_RESULT_LOGO		"data/TEXTURE/player01win.png"		// 勝つ テクスチャファイル名
+#define	TEXTURE_RESULT_LOGO_2	"data/TEXTURE/player02win.png"	// 負ける テクスチャファイル名
 
 
 
-#define	RESULT_LOGO_POS_X	(SCREEN_WIDTH * 0.19f)		// リザルトロゴの位置(X座標) 240
-#define	RESULT_LOGO_POS_Y	(SCREEN_HEIGHT * 0.65f)		// リザルトロゴの位置(Y座標) 620
-#define	RESULT_LOGO_WIDTH	(800)		// リザルトロゴの幅
-#define	RESULT_LOGO_HEIGHT	(240)		// リザルトロゴの高さ
+#define	RESULT_LOGO_WIDTH	(286 * 1.4f)		// リザルトロゴの幅
+#define	RESULT_LOGO_HEIGHT	(160 * 1.4f)		// リザルトロゴの高さ
+#define	RESULT_LOGO_POS_X	((SCREEN_WIDTH - RESULT_LOGO_WIDTH) / 2)		// リザルトロゴの位置(X座標) 240
+#define	RESULT_LOGO_POS_Y	(SCREEN_HEIGHT * 0.6f)		// リザルトロゴの位置(Y座標) 620
 
 #define	COUNT_APPERA_RESULT	(60)		// リザルトロゴ出現までの待ち時間	
 #define	LIMIT_COUNT_WAIT	(60 * 5)	// 待ち時間
@@ -169,37 +169,28 @@ void DrawResult(void)
 {
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	
-	// 頂点バッファをデバイスのデータストリームにバインド
-    pDevice->SetStreamSource(0, g_pD3DVtxBuffResultLogo, 0, sizeof(VERTEX_2D));
-
-	// 頂点フォーマットの設定
-	pDevice->SetFVF(FVF_VERTEX_2D);
-
 	if (!textureDecide)
 	{
-		if (GetPlayMode() == PLAY_MODE_SINGLE)
-		{
-			if (GetWinner() == OBJECT_PLAYER)
-			{
-				// テクスチャの設定
-				g_textureBuff = g_pD3DTextureResultLogo;
-				
-			}
-			else
-			{
-				// テクスチャの設定
-				g_textureBuff = g_pD3DTextureResultLogo2;
-			}
-		}
-		else if (GetPlayMode() == PLAY_MODE_DOUBLE)
+
+		if (GetWinner() == OBJECT_PLAYER)
 		{
 			// テクスチャの設定
 			g_textureBuff = g_pD3DTextureResultLogo;
 		}
+		else
+		{
+			// テクスチャの設定
+			g_textureBuff = g_pD3DTextureResultLogo2;
+		}
+
 		textureDecide = true;
 	}
 
+	// 頂点バッファをデバイスのデータストリームにバインド
+	pDevice->SetStreamSource(0, g_pD3DVtxBuffResultLogo, 0, sizeof(VERTEX_2D));
+
+	// 頂点フォーマットの設定
+	pDevice->SetFVF(FVF_VERTEX_2D);
 
 	pDevice->SetTexture(0, g_textureBuff);
 
@@ -316,11 +307,26 @@ void SetColorResultLogo(void)
 		// 頂点データの範囲をロックし、頂点バッファへのポインタを取得
 		g_pD3DVtxBuffResultLogo->Lock(0, 0, (void**)&pVtx, 0);
 
-		// 反射光の設定
-		pVtx[0].diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, g_fAlphaResult);
-		pVtx[1].diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, g_fAlphaResult);
-		pVtx[2].diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, g_fAlphaResult);
-		pVtx[3].diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, g_fAlphaResult);
+		if (GetWinner() == OBJECT_PLAYER)
+		{
+			// 反射光の設定
+			pVtx[0].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, g_fAlphaResult);
+			pVtx[1].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, g_fAlphaResult);
+			pVtx[2].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, g_fAlphaResult);
+			pVtx[3].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, g_fAlphaResult);
+
+		}
+		else
+		{
+			// 反射光の設定
+			pVtx[0].diffuse = D3DXCOLOR(0.3f, 1.0f, 1.0f, g_fAlphaResult);
+			pVtx[1].diffuse = D3DXCOLOR(0.3f, 1.0f, 1.0f, g_fAlphaResult);
+			pVtx[2].diffuse = D3DXCOLOR(0.3f, 1.0f, 1.0f, g_fAlphaResult);
+			pVtx[3].diffuse = D3DXCOLOR(0.3f, 1.0f, 1.0f, g_fAlphaResult);
+
+		}
+
+
 
 		// 頂点データをアンロックする
 		g_pD3DVtxBuffResultLogo->Unlock();

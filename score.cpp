@@ -12,7 +12,7 @@
 // マクロ定義
 //*****************************************************************************
 #define	TEXTURE_SCORE		"data/TEXTURE/num.png"	// 読み込むテクスチャファイル名
-#define	TEXTURE_FRAME_SCORE	"data/TEXTURE/frame_score.png"	// 読み込むテクスチャファイル名
+#define	TEXTURE_FRAME_SCORE	"data/TEXTURE/score.png"	// 読み込むテクスチャファイル名
 #define	SCORE_SIZE_X		(72.2f * 0.7f)							// スコアの数字の幅
 #define	SCORE_SIZE_Y		(76.0f * 0.7f)							// スコアの数字の高さ
 #define	SCORE_INTERVAL_X	(0.0f)							// スコアの数字の表示間隔
@@ -235,10 +235,10 @@ HRESULT MakeVertexScore(LPDIRECT3DDEVICE9 pDevice)
 
 		{//フレームの頂点
 			// 頂点座標の設定
-			pVtx[0].vtx = D3DXVECTOR3(SCORE_POS_X - 15, SCORE_POS_Y - 15, 0.0f);
-			pVtx[1].vtx = D3DXVECTOR3(SCORE_POS_X + (SCORE_INTERVAL_X + SCORE_SIZE_X) * NUM_PLACE + 15, SCORE_POS_Y - 15, 0.0f);
-			pVtx[2].vtx = D3DXVECTOR3(SCORE_POS_X - 15, SCORE_POS_Y + SCORE_SIZE_Y + 5, 0.0f);
-			pVtx[3].vtx = D3DXVECTOR3(SCORE_POS_X + (SCORE_INTERVAL_X + SCORE_SIZE_X) * NUM_PLACE + 15, SCORE_POS_Y + SCORE_SIZE_Y + 5, 0.0f);
+			pVtx[0].vtx = D3DXVECTOR3(SCORE_POS_X - 30, SCORE_POS_Y - 25, 0.0f);
+			pVtx[1].vtx = D3DXVECTOR3(SCORE_POS_X + (SCORE_INTERVAL_X + SCORE_SIZE_X) * NUM_PLACE + 30, SCORE_POS_Y - 25, 0.0f);
+			pVtx[2].vtx = D3DXVECTOR3(SCORE_POS_X - 30, SCORE_POS_Y + SCORE_SIZE_Y + 15, 0.0f);
+			pVtx[3].vtx = D3DXVECTOR3(SCORE_POS_X + (SCORE_INTERVAL_X + SCORE_SIZE_X) * NUM_PLACE + 30, SCORE_POS_Y + SCORE_SIZE_Y + 15, 0.0f);
 
 			// rhwの設定
 			pVtx[0].rhw =
@@ -301,10 +301,10 @@ HRESULT MakeVertexScore2(LPDIRECT3DDEVICE9 pDevice)
 			pVtx[3].rhw = 1.0f;
 
 			// 反射光の設定
-			pVtx[0].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, 1.0f);
-			pVtx[1].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, 1.0f);
-			pVtx[2].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, 1.0f);
-			pVtx[3].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, 1.0f);
+			pVtx[0].diffuse = D3DXCOLOR(1.0f, 0.5f, 1.0f, 1.0f);
+			pVtx[1].diffuse = D3DXCOLOR(1.0f, 0.5f, 1.0f, 1.0f);
+			pVtx[2].diffuse = D3DXCOLOR(1.0f, 0.5f, 1.0f, 1.0f);
+			pVtx[3].diffuse = D3DXCOLOR(1.0f, 0.5f, 1.0f, 1.0f);
 
 			// テクスチャ座標の設定
 			pVtx[0].tex = D3DXVECTOR2(0.0f, 0.0f);
@@ -315,10 +315,10 @@ HRESULT MakeVertexScore2(LPDIRECT3DDEVICE9 pDevice)
 
 		{//フレームの頂点
 			// 頂点座標の設定
-			pVtx[0].vtx = D3DXVECTOR3(SCORE_POS_X2 - 15, SCORE_POS_Y - 15, 0.0f);
-			pVtx[1].vtx = D3DXVECTOR3(SCORE_POS_X2 + (SCORE_INTERVAL_X + SCORE_SIZE_X) * NUM_PLACE + 15, SCORE_POS_Y - 15, 0.0f);
-			pVtx[2].vtx = D3DXVECTOR3(SCORE_POS_X2 - 15, SCORE_POS_Y + SCORE_SIZE_Y + 5, 0.0f);
-			pVtx[3].vtx = D3DXVECTOR3(SCORE_POS_X2 + (SCORE_INTERVAL_X + SCORE_SIZE_X) * NUM_PLACE + 15, SCORE_POS_Y + SCORE_SIZE_Y + 5, 0.0f);
+			pVtx[0].vtx = D3DXVECTOR3(SCORE_POS_X2 - 30, SCORE_POS_Y - 25, 0.0f);
+			pVtx[1].vtx = D3DXVECTOR3(SCORE_POS_X2 + (SCORE_INTERVAL_X + SCORE_SIZE_X) * NUM_PLACE + 30, SCORE_POS_Y - 25, 0.0f);
+			pVtx[2].vtx = D3DXVECTOR3(SCORE_POS_X2 - 30, SCORE_POS_Y + SCORE_SIZE_Y + 15, 0.0f);
+			pVtx[3].vtx = D3DXVECTOR3(SCORE_POS_X2 + (SCORE_INTERVAL_X + SCORE_SIZE_X) * NUM_PLACE + 30, SCORE_POS_Y + SCORE_SIZE_Y + 15, 0.0f);
 
 			// rhwの設定
 			pVtx[0].rhw =
@@ -327,10 +327,10 @@ HRESULT MakeVertexScore2(LPDIRECT3DDEVICE9 pDevice)
 			pVtx[3].rhw = 1.0f;
 
 			// 反射光の設定
-			pVtx[0].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, 1.0f);
-			pVtx[1].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, 1.0f);
-			pVtx[2].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, 1.0f);
-			pVtx[3].diffuse = D3DXCOLOR(1.0f, 0.4f, 1.0f, 1.0f);
+			pVtx[0].diffuse = D3DXCOLOR(1.0f, 0.5f, 1.0f, 1.0f);
+			pVtx[1].diffuse = D3DXCOLOR(1.0f, 0.5f, 1.0f, 1.0f);
+			pVtx[2].diffuse = D3DXCOLOR(1.0f, 0.5f, 1.0f, 1.0f);
+			pVtx[3].diffuse = D3DXCOLOR(1.0f, 0.5f, 1.0f, 1.0f);
 
 			// テクスチャ座標の設定
 			pVtx[0].tex = D3DXVECTOR2(0.0f, 0.0f);

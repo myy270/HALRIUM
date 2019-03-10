@@ -10,12 +10,13 @@
 #include "light.h"
 #include "basicScene.h"
 #include "particleStar.h"
+#include "sound.h"
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
 #define	TEXTURE_TITLE_BG		"data/TEXTURE/bg000.jpg"		// 読み込むテクスチャファイル名
 #define	TEXTURE_TITLE_LOGO	"data/TEXTURE/HALRIUM_title3.png"		// 読み込むテクスチャファイル名
-#define	TEXTURE_LOGO_START	"data/TEXTURE/press_enter.png"	// 読み込むテクスチャファイル名
+#define	TEXTURE_LOGO_START	"data/TEXTURE/PRESS_START.png"	// 読み込むテクスチャファイル名
 #define	TEXTURE_1P2P		"data/TEXTURE/1p2p.png"			// 読み込むテクスチャファイル名
 
 
@@ -27,8 +28,8 @@
 #define	TITLE_LOGO_POS_Y		(70)		// タイトルロゴの位置(Y座標)
 
 
-#define	START_WIDTH				(480)		// スタートボタンの幅
-#define	START_HEIGHT			(120)		// スタートボタンの高さ
+#define	START_WIDTH				(289 * 1.2f)		// スタートボタンの幅
+#define	START_HEIGHT			(145 * 1.2f)		// スタートボタンの高さ
 #define	START_POS_X				((SCREEN_WIDTH - START_WIDTH) / 2)		// スタートボタンの位置(X座標) 400
 #define	START_POS_Y				(SCREEN_HEIGHT * 0.75f)		// スタートボタンの位置(Y座標) 720
 
@@ -124,6 +125,10 @@ HRESULT InitTitle(void)
 								&g_pD3DTextureOneTwo);		// 読み込むメモリー
 
 
+	// BGM再生 ちゃんとloopできるにする!
+	PlaySound(SOUND_LABEL_BGM000, XAUDIO2_LOOP_INFINITE);
+
+
 	return S_OK;
 }
 
@@ -179,6 +184,9 @@ void UninitTitle(void)
 		g_pD3DVtxBuffOneTwo->Release();
 		g_pD3DVtxBuffOneTwo = NULL;
 	}
+
+	// BGM停止
+	StopSound(SOUND_LABEL_BGM000);
 }
 
 //=============================================================================

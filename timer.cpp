@@ -12,7 +12,7 @@
 // マクロ定義
 //*****************************************************************************
 #define	TEXTURE_TIMER		"data/TEXTURE/num.png"	// 読み込むテクスチャファイル名
-#define	TEXTURE_FRAME_TIMER	"data/TEXTURE/frame_timer.png"	// 読み込むテクスチャファイル名
+#define	TEXTURE_FRAME_TIMER	"data/TEXTURE/time.png"	// 読み込むテクスチャファイル名
 #define	TIMER_SIZE_X		(72.2f * 0.7f)							// タイマーの数字の幅
 #define	TIMER_SIZE_Y		(76.0f * 0.7f)							// タイマーの数字の高さ
 #define	TIMER_INTERVAL_X	(0.0f)							// タイマーの数字の表示間隔
@@ -222,10 +222,10 @@ HRESULT MakeVertexTimer(LPDIRECT3DDEVICE9 pDevice)
 		}
 
 		// 頂点座標の設定
-		pVtx[0].vtx = D3DXVECTOR3(TIMER_POS_X - 15.0f, TIMER_POS_Y - 15, 0.0f);
-		pVtx[1].vtx = D3DXVECTOR3(TIMER_POS_X + (TIMER_INTERVAL_X + TIMER_SIZE_X) * (NUM_PLACE - 1) + TIMER_SIZE_X + 15.0f, TIMER_POS_Y - 15, 0.0f);
-		pVtx[2].vtx = D3DXVECTOR3(TIMER_POS_X - 15.0f, TIMER_POS_Y + TIMER_SIZE_Y + 5, 0.0f);
-		pVtx[3].vtx = D3DXVECTOR3(TIMER_POS_X + (TIMER_INTERVAL_X + TIMER_SIZE_X) * (NUM_PLACE - 1) + TIMER_SIZE_X + 15.0f, TIMER_POS_Y + TIMER_SIZE_Y + 5, 0.0f);
+		pVtx[0].vtx = D3DXVECTOR3(TIMER_POS_X - 20.0f, TIMER_POS_Y - 23, 0.0f);
+		pVtx[1].vtx = D3DXVECTOR3(TIMER_POS_X + (TIMER_INTERVAL_X + TIMER_SIZE_X) * NUM_PLACE + 20.0f, TIMER_POS_Y - 23, 0.0f);
+		pVtx[2].vtx = D3DXVECTOR3(TIMER_POS_X - 20.0f, TIMER_POS_Y + TIMER_SIZE_Y + 15, 0.0f);
+		pVtx[3].vtx = D3DXVECTOR3(TIMER_POS_X + (TIMER_INTERVAL_X + TIMER_SIZE_X) * NUM_PLACE + 20.0f, TIMER_POS_Y + TIMER_SIZE_Y + 15, 0.0f);
 
 		// rhwの設定
 		pVtx[0].rhw =
