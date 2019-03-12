@@ -35,9 +35,8 @@ PARAM g_aParam[SOUND_LABEL_MAX] =
 {
 	{"data/BGM/hewTitleBGM.wav", true},		// BGM0
 	{"data/BGM/hewGameBGM.wav", true},		// BGM1
-	{"data/SE/shot000.wav", false},			// ’e”­ŽË‰¹
-	{"data/SE/explosion000.wav", false},	// ”š”­‰¹
-	{"data/SE/coin000.wav", false},			// ƒRƒCƒ“‰¹
+	{"data/SE/selectSE.wav", false},			// ’e”­ŽË‰¹
+	{"data/SE/completeSE.wav", false},	// ”š”­‰¹
 };
 
 //=============================================================================

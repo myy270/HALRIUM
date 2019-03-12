@@ -49,8 +49,8 @@
 #define BUTTON_RSTICK_LEFT			0x01000000l	//
 #define BUTTON_RSTICK_RIGHT			0x02000000l	//
 
-#define LSTICK_OFFSET				(4100)	    //left stick の精度を調整する
-#define RSTICK_OFFSET				(4100)	    //right stick の精度を調整する
+#define LSTICK_OFFSET				(5100)	    //left stick の精度を調整する
+#define RSTICK_OFFSET				(5100)	    //right stick の精度を調整する
 
 #define GAMEPADMAX					(4)			// 同時に接続するジョイパッドの最大数をセット
 

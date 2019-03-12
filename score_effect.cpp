@@ -59,7 +59,7 @@ HRESULT InitBezier_Particle(void)
 	{
 		Bezier_Particle[CntParticle].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 		Bezier_Particle[CntParticle].rot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-		Bezier_Particle[CntParticle].scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
+		Bezier_Particle[CntParticle].scale = D3DXVECTOR3(0.4f, 0.4f, 0.4f);
 		Bezier_Particle[CntParticle].move = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
 		Bezier_Particle[CntParticle].fSizeX = PARTICLE_SIZE_X;
 		Bezier_Particle[CntParticle].fSizeY = PARTICLE_SIZE_Y;
@@ -121,14 +121,14 @@ void UpdateBezier_Particle(void)
 	D3DXMatrixInverse(&invViewport, NULL, &mtxViewPort);
 
 	// スコアのスクリーン座標に置き換える
-	D3DXVECTOR3 screenPos = D3DXVECTOR3(937, 70, 0.0f);					//D3DXVECTOR3型に変換
+	D3DXVECTOR3 screenPos = D3DXVECTOR3(940.0f, 80.0f, 0.0f);					//D3DXVECTOR3型に変換
 
 	//POINT cursor;
 	//GetCursorPos(&cursor);												//カーソルのスクリーン座標を取得
 	//D3DXVECTOR3 screenPos = D3DXVECTOR3(cursor.x, cursor.y, 0.0f);		//D3DXVECTOR3型に変換
 
 	//カーソルのスクリーン座標をワールド座標に変換
-	D3DXVECTOR3 worldPos;												//変換後のワールド座標を格納する変数
+	D3DXVECTOR3 worldPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);												//変換後のワールド座標を格納する変数
 	D3DXMATRIX temp = invViewport * invProjection * invView;			//変換する行列を作成
 	D3DXVec3TransformCoord(&worldPos, &screenPos, &temp);				//スクリーン座標を変換行列でワールド座標へ変換
 
@@ -359,8 +359,8 @@ void SetBezier_Particle(D3DXVECTOR3 pos)
 			// 軌道の設定
 			Bezier_Particle[CntParticle].control1 = D3DXVECTOR3(BEZ_CONTROL1_XZ, BEZ_CONTROL1_XZ, BEZ_CONTROL2_Y) + pos;
 			// 軌道の設定2
-			Bezier_Particle[CntParticle].control2 = D3DXVECTOR3(BEZ_CONTROL2_XZ, BEZ_CONTROL1_XZ, BEZ_CONTROL2_Y) + pos;
-			//Bezier_Particle[CntParticle].control2 = D3DXVECTOR3(10.0f, 50.0f, 0.0f) + pos;//集まる
+			//Bezier_Particle[CntParticle].control2 = D3DXVECTOR3(BEZ_CONTROL2_XZ, BEZ_CONTROL1_XZ, BEZ_CONTROL2_Y) + pos;
+			Bezier_Particle[CntParticle].control2 = D3DXVECTOR3(10.0f, 50.0f, 0.0f) + pos;//集まる
 			// カウントフレームの初期化
 			Bezier_Particle[CntParticle].cntFrame = 0;
 			// カウントクリックの初期化

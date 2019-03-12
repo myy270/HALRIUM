@@ -22,8 +22,8 @@
 
 
 
-#define	RESULT_LOGO_WIDTH	(286 * 1.4f)		// リザルトロゴの幅
-#define	RESULT_LOGO_HEIGHT	(160 * 1.4f)		// リザルトロゴの高さ
+#define	RESULT_LOGO_WIDTH	(286 * 1.4f * (SCREEN_WIDTH / 1280.0f))		// リザルトロゴの幅
+#define	RESULT_LOGO_HEIGHT	(160 * 1.4f * (SCREEN_HEIGHT / 720.0f))		// リザルトロゴの高さ
 #define	RESULT_LOGO_POS_X	((SCREEN_WIDTH - RESULT_LOGO_WIDTH) / 2)		// リザルトロゴの位置(X座標) 240
 #define	RESULT_LOGO_POS_Y	(SCREEN_HEIGHT * 0.6f)		// リザルトロゴの位置(Y座標) 620
 
@@ -150,7 +150,7 @@ void UpdateResult(void)
 		}
 	}
 
-	if(GetKeyboardTrigger(DIK_RETURN) || IsButtonTrigger(0, BUTTON_OPTIONS))
+	if(GetKeyboardTrigger(DIK_RETURN) || IsButtonTrigger(0, BUTTON_OPTIONS) || IsButtonTrigger(1, BUTTON_OPTIONS))
 	{// Enter押したら、フェードアウトしてモードを切り替えいく
 		SetFade(FADE_OUT);
 	}

@@ -21,15 +21,15 @@
 
 
 
-#define	TITLE_LOGO_WIDTH		(704 * 1.1f)		// タイトルロゴの幅
-#define	TITLE_LOGO_HEIGHT		(396 * 1.1f)		// タイトルロゴの高さ
+#define	TITLE_LOGO_WIDTH		(704.0f * 1.1f * (SCREEN_WIDTH / 1280.0f))		// タイトルロゴの幅
+#define	TITLE_LOGO_HEIGHT		(396.0f * 1.1f * (SCREEN_HEIGHT / 720.0f))		// タイトルロゴの高さ
 
 #define	TITLE_LOGO_POS_X		((SCREEN_WIDTH - TITLE_LOGO_WIDTH) / 2)		// タイトルロゴの位置(X座標) 320
 #define	TITLE_LOGO_POS_Y		(70)		// タイトルロゴの位置(Y座標)
 
 
-#define	START_WIDTH				(289 * 1.2f)		// スタートボタンの幅
-#define	START_HEIGHT			(145 * 1.2f)		// スタートボタンの高さ
+#define	START_WIDTH				(289 * 1.2f * (SCREEN_WIDTH / 1280.0f))		// スタートボタンの幅
+#define	START_HEIGHT			(145 * 1.2f * (SCREEN_HEIGHT / 720.0f))		// スタートボタンの高さ
 #define	START_POS_X				((SCREEN_WIDTH - START_WIDTH) / 2)		// スタートボタンの位置(X座標) 400
 #define	START_POS_Y				(SCREEN_HEIGHT * 0.75f)		// スタートボタンの位置(Y座標) 720
 
@@ -223,7 +223,7 @@ void UpdateTitle(void)
 		}
 	}
 
-	if(GetKeyboardTrigger(DIK_RETURN) || IsButtonTrigger(0, BUTTON_OPTIONS))
+	if(GetKeyboardTrigger(DIK_RETURN) || IsButtonTrigger(0, BUTTON_OPTIONS) || IsButtonTrigger(1, BUTTON_OPTIONS))
 	{
 		if(g_nCountAppearStart == 0)
 		{// タイトル登場スキップ
@@ -237,6 +237,8 @@ void UpdateTitle(void)
 			// ゲームへ
 			SetFade(FADE_OUT);//MODE が　GAME に変換　
 
+			
+			PlaySound(SOUND_LABEL_SE_SELECT, XAUDIO2_COMMIT_NOW);
 		}
 	}
 

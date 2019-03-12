@@ -13,8 +13,8 @@
 //*****************************************************************************
 #define	TEXTURE_SCORE		"data/TEXTURE/num.png"	// “Ç‚İ‚ŞƒeƒNƒXƒ`ƒƒƒtƒ@ƒCƒ‹–¼
 #define	TEXTURE_FRAME_SCORE	"data/TEXTURE/score.png"	// “Ç‚İ‚ŞƒeƒNƒXƒ`ƒƒƒtƒ@ƒCƒ‹–¼
-#define	SCORE_SIZE_X		(72.2f * 0.7f)							// ƒXƒRƒA‚Ì”š‚Ì•
-#define	SCORE_SIZE_Y		(76.0f * 0.7f)							// ƒXƒRƒA‚Ì”š‚Ì‚‚³
+#define	SCORE_SIZE_X		(72.2f * 0.7f * (SCREEN_WIDTH / 1280.0f))							// ƒXƒRƒA‚Ì”š‚Ì•
+#define	SCORE_SIZE_Y		(76.0f * 0.7f * (SCREEN_HEIGHT / 720.0f))							// ƒXƒRƒA‚Ì”š‚Ì‚‚³
 #define	SCORE_INTERVAL_X	(0.0f)							// ƒXƒRƒA‚Ì”š‚Ì•\¦ŠÔŠu
 
 #define	NUM_PLACE			(5)								// ƒXƒRƒA‚ÌŒ…”
@@ -24,6 +24,8 @@
 
 #define	SCORE_POS_X2		(20.0f)// ƒvƒŒƒCƒ„[‚ÌƒXƒRƒA
 
+#define	VALUE_SCROLL			(1)
+
 //*****************************************************************************
 // ƒvƒƒgƒ^ƒCƒvéŒ¾
 //*****************************************************************************
@@ -32,7 +34,7 @@ void SetTextureScore(int idx, int number);// “G‚Ì
 
 HRESULT MakeVertexScore2(LPDIRECT3DDEVICE9 pDevice);// ƒvƒŒƒCƒ„[‚Ì
 void SetTextureScore2(int idx, int number);// ƒvƒŒƒCƒ„[‚Ì
-
+void ScoreScroll(void);
 //*****************************************************************************
 // ƒOƒ[ƒoƒ‹•Ï”éŒ¾
 //*****************************************************************************
@@ -42,8 +44,9 @@ LPDIRECT3DVERTEXBUFFER9 g_pD3DVtxBuffScore = NULL;		// “G‚Ì’¸“_ƒoƒbƒtƒ@ƒCƒ“ƒ^[ƒ
 LPDIRECT3DVERTEXBUFFER9 g_pD3DVtxBuffScore2 = NULL;		// ƒvƒŒƒCƒ„[‚Ì’¸“_ƒoƒbƒtƒ@ƒCƒ“ƒ^[ƒtƒF[ƒX‚Ö‚Ìƒ|ƒCƒ“ƒ^
 
 int						g_score;						// “G‚ÌƒXƒRƒA
-
+int						g_scoreScroll;						// “G‚ÌƒXƒRƒA
 int						g_score2;						// ƒvƒŒƒCƒ„[‚ÌƒXƒRƒA
+int						g_scoreScroll2;						// “G‚ÌƒXƒRƒA
 
 OBJECT g_winner;
 //=============================================================================
@@ -59,8 +62,10 @@ HRESULT InitScore(void)
 
 	// ƒXƒRƒA‚Ì‰Šú‰»
 	g_score = 0;
+	g_scoreScroll = 0;
 	g_score2 = 0;
-	
+	g_scoreScroll2 = 0;
+
 	// ’¸“_î•ñ‚Ìì¬
 	MakeVertexScore(pDevice);
 
@@ -113,18 +118,20 @@ void UninitScore(void)
 //=============================================================================
 void UpdateScore(void)
 {
+	ScoreScroll();
+
 	for(int nCntPlace = 0; nCntPlace < NUM_PLACE; nCntPlace++)
 	{
 		int number;
 		//ã‚©‚ç”F¯‚·‚é; (NUM_PLACE - nCntPlace)‚ÌŒ…‚ğ”F¯‚·‚é;@
 		//•ªq‚Ì(g_score % (int)(powf(10.0f, (float)(NUM_PLACE - nCntPlace))))‚ÌŒ‹‰Ê‚Í(NUM_PLACE - nCntPlace)‚ÌŒ…ˆÈ~‚Ì”š‚Å‚ ‚é
 		// % ‚Æ / ‚ğ‚¿‚á‚ñ‚ÆŒ©•ª‚¯‚é
-		number = (g_score % (int)(powf(10.0f, (float)(NUM_PLACE - nCntPlace)))) / (int)(powf(10.0f, (float)(NUM_PLACE - nCntPlace - 1)));
+		number = (g_scoreScroll % (int)(powf(10.0f, (float)(NUM_PLACE - nCntPlace)))) / (int)(powf(10.0f, (float)(NUM_PLACE - nCntPlace - 1)));
 		SetTextureScore(nCntPlace, number);
 
 
 		//ƒvƒŒƒCƒ„[‚Ì
-		number = (g_score2 % (int)(powf(10.0f, (float)(NUM_PLACE - nCntPlace)))) / (int)(powf(10.0f, (float)(NUM_PLACE - nCntPlace - 1)));
+		number = (g_scoreScroll2 % (int)(powf(10.0f, (float)(NUM_PLACE - nCntPlace)))) / (int)(powf(10.0f, (float)(NUM_PLACE - nCntPlace - 1)));
 		SetTextureScore2(nCntPlace, number);
 
 	}
@@ -454,3 +461,69 @@ int GetScore(void)
 	return g_score;
 
  }
+
+
+void ScoreScroll(void)
+{
+	int val;
+
+	val = VALUE_SCROLL;
+	if (abs(g_scoreScroll - g_score) > 200)
+	{
+		val = VALUE_SCROLL + 4;
+	}
+	if (abs(g_scoreScroll - g_score) > 50)
+	{
+		val = VALUE_SCROLL + 1;
+	}
+
+	//ƒXƒRƒA‚ÌƒXƒNƒ[ƒ‹‹@”\
+	if (g_scoreScroll < g_score)
+	{
+		g_scoreScroll += val;
+
+		if (g_scoreScroll > g_score)
+		{
+			g_scoreScroll = g_score;
+		}
+	}
+	else if (g_scoreScroll > g_score)
+	{
+		g_scoreScroll -= val;
+
+		if (g_scoreScroll < g_score)
+		{
+			g_scoreScroll = g_score;
+		}
+	}
+
+	val = VALUE_SCROLL;
+	if (abs(g_scoreScroll2 - g_score2) > 200)
+	{
+		val = VALUE_SCROLL + 4;
+	}
+	if (abs(g_scoreScroll2 - g_score2) > 50)
+	{
+		val = VALUE_SCROLL + 1;
+	}
+
+	if (g_scoreScroll2 < g_score2)
+	{
+		g_scoreScroll2 += val;
+
+		if (g_scoreScroll2 > g_score2)
+		{
+			g_scoreScroll2 = g_score2;
+		}
+	}
+	else if (g_scoreScroll2 > g_score2)
+	{
+		g_scoreScroll2 -= val;
+
+		if (g_scoreScroll2 < g_score2)
+		{
+			g_scoreScroll2 = g_score2;
+		}
+	}
+
+}

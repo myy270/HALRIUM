@@ -6,15 +6,16 @@
 //=============================================================================
 #include "timer.h"
 #include "fade.h"
-
+#include "mouse.h"
 #include "input.h"
+#include "seiza.h"
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
 #define	TEXTURE_TIMER		"data/TEXTURE/num.png"	// 読み込むテクスチャファイル名
 #define	TEXTURE_FRAME_TIMER	"data/TEXTURE/time.png"	// 読み込むテクスチャファイル名
-#define	TIMER_SIZE_X		(72.2f * 0.7f)							// タイマーの数字の幅
-#define	TIMER_SIZE_Y		(76.0f * 0.7f)							// タイマーの数字の高さ
+#define	TIMER_SIZE_X		(72.2f * 0.7f * (SCREEN_WIDTH / 1280.0f))							// タイマーの数字の幅
+#define	TIMER_SIZE_Y		(76.0f * 0.7f * (SCREEN_HEIGHT / 720.0f))							// タイマーの数字の高さ
 #define	TIMER_INTERVAL_X	(0.0f)							// タイマーの数字の表示間隔
 
 #define	NUM_PLACE			(3)			// タイマーの桁数
@@ -109,6 +110,29 @@ void UpdateTimer(void)
 	}
 #endif
 
+	SEIZA** seiza = GetSeiza();
+
+	if (!g_timeOut)
+	{
+		bool clear = true;
+		for (int i = 0; i < MAX_SEIZA; i++, seiza++)
+		{
+			if (!(*seiza)->isConnect)
+			{
+				clear = false;
+				break;
+			}
+		}
+
+		if (clear)
+		{
+			g_timeOut = 1;
+
+			SetFade(FADE_OUT);
+
+		}
+	}
+
 	if(!g_timeOut)
 	{
 		g_nTimer--;
@@ -141,6 +165,8 @@ void UpdateTimer(void)
 		number = ((timer / 60) % (int)(powf(10.0f, (float)(NUM_PLACE - nCntPlace)))) / (int)(powf(10.0f, (float)(NUM_PLACE - nCntPlace - 1)));
 		SetTextureTimer(nCntPlace, number);
 	}
+
+
 }
 
 //=============================================================================

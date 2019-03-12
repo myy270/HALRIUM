@@ -51,7 +51,7 @@ HRESULT InitGame(void)
 {
 	// タイマーの初期化
 	InitTimer();
-	ResetTimer(60);
+	ResetTimer(999);
 
 	{
 		InitAri();
