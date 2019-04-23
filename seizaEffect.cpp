@@ -5,6 +5,8 @@
 //
 //=============================================================================
 #include "seizaEffect.h"
+#include "debugproc.h"
+
 
 #include "Aries.h"
 #include "Taurus.h"
@@ -36,8 +38,8 @@
 #define	TEXTURE_PIS			("data/TEXTURE/pis00.png")	// 読み込むテクスチャファイル名
 
 
-#define	SEIZAEFFECT_SIZE_X		(1.0f)						// ビルボードの幅
-#define	SEIZAEFFECT_SIZE_Y		(1.0f)						// ビルボードの高さ
+#define	SEIZAEFFECT_SIZE_X		(83.0f / 4)						// ビルボードの幅
+#define	SEIZAEFFECT_SIZE_Y		(63.0f / 3)						// ビルボードの高さ
 #define SEIZAEFFECT_MAX			(12)						//エフェクトの番号
 
 
@@ -89,12 +91,46 @@ D3DXVECTOR3 offsetScl[SEIZAEFFECT_MAX] =
 	D3DXVECTOR3(14.5f * PIS_DISTANCE * 5.0f, 14.5f * PIS_DISTANCE * 8.5f, 1.0f),	//11 魚座	
 }; 
 
+static D3DXVECTOR3 pos[12];
+static D3DXVECTOR3 scl[12];
 
+static D3DXVECTOR3 posCom[12];
+static D3DXVECTOR3 sclCom[12];
+
+int randam[12];
 //=============================================================================
 // 初期化処理
 //=============================================================================
 HRESULT InitSeizaEffect(int type)
 {
+	
+	
+	posCom[0] = D3DXVECTOR3(-29.1f, 23.7f, 0.0f);
+	posCom[1] = D3DXVECTOR3(-7.5f, 23.7f, 0.0f);
+	posCom[2] = D3DXVECTOR3( 12.5f, 23.7f, 0.0f);
+	posCom[3] = D3DXVECTOR3( 28.6f, 23.7f, 0.0f);
+
+	posCom[4] = D3DXVECTOR3(-29.1f, 2.5f, 0.0f);
+	posCom[5] =	D3DXVECTOR3(-7.5f, 2.5f, 0.0f);
+	posCom[6] =	D3DXVECTOR3(12.5f, 2.5f, 0.0f);
+	posCom[7] =	D3DXVECTOR3(28.6f, 2.5f, 0.0f);
+
+	posCom[8] =	D3DXVECTOR3(-29.1f, -16.5f, 0.0f);
+	posCom[9] =	D3DXVECTOR3(-7.5f, -16.5f, 0.0f);
+	posCom[10] =	D3DXVECTOR3(12.5f, -16.5f, 0.0f);
+	posCom[11] =	D3DXVECTOR3(28.6f, -16.5f, 0.0f);
+	
+	
+
+
+	for (int i = 0; i < 12; i++)
+	{
+		pos[i] = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+		scl[i] = D3DXVECTOR3(1.3f, 1.4f, 1.0f);
+		randam[i] = -1;
+	}
+
+
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 	SEIZAEFFECT *seizaEffect = &seizaEffectWk[0];
 
@@ -155,9 +191,28 @@ HRESULT InitSeizaEffect(int type)
 
 	for (int i = 0; i < SEIZAEFFECT_MAX; i++, seizaEffect++)
 	{
+		int val;
+		for (int j = 0; j < 12; j++)
+		{
+			if (randam[j] == -1)
+			{
+				while (1)
+				{
+					val = rand() % 12;
+					if (randam[val] == -1)
+					{
+						seizaEffectWk[i].pos = posCom[val];
+						randam[val] = i;
+						break;
+					}
+				}
+				break;
+			}
+		}
+
 		seizaEffect->use = false;
-		seizaEffect->pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-		seizaEffect->scl = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
+		//seizaEffect->pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+		seizaEffect->scl = D3DXVECTOR3(1.3f, 1.4f, 1.0f);
 		seizaEffect->color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.0f);
 		seizaEffect->delta = 0.003f;
 	}
@@ -194,14 +249,138 @@ void UpdateSeizaEffect(void)
 {
 	SEIZA** seiza = GetSeiza();
 
-	for (int i = 0; i < SEIZAEFFECT_MAX; i++, seiza++)
+	static int index = 0;
+
+	if (GetKeyboardPress(DIK_0))
 	{
-		if ((*seiza)->isConnect)
+		index = 0;
+	}
+	if (GetKeyboardPress(DIK_1))
+	{
+		index = 1;
+	}
+	if (GetKeyboardPress(DIK_2))
+	{
+		index = 2;
+	}
+	if (GetKeyboardPress(DIK_3))
+	{
+		index = 3;
+	}
+	if (GetKeyboardPress(DIK_4))
+	{
+		index = 4;
+	}
+	if (GetKeyboardPress(DIK_5))
+	{
+		index = 5;
+	}
+	if (GetKeyboardPress(DIK_6))
+	{
+		index = 6;
+	}
+	if (GetKeyboardPress(DIK_7))
+	{
+		index = 7;
+	}
+	if (GetKeyboardPress(DIK_8))
+	{
+		index = 8;
+	}
+	if (GetKeyboardPress(DIK_9))
+	{
+		index = 9;
+	}
+	if (GetKeyboardPress(DIK_MINUS))
+	{
+		index = 10;
+	}
+	if (GetKeyboardPress(DIK_YEN))
+	{
+		index = 11;
+	}
+
+
+
+	if (GetKeyboardPress(DIK_T))
+	{
+		seizaEffectWk[index].pos.y += 0.1f;
+	}
+	if (GetKeyboardPress(DIK_G))
+	{
+		seizaEffectWk[index].pos.y -= 0.1f;
+	}
+	if (GetKeyboardPress(DIK_F))
+	{
+		seizaEffectWk[index].pos.x -= 0.1f;
+	}
+	if (GetKeyboardPress(DIK_H))
+	{
+		seizaEffectWk[index].pos.x += 0.1f;
+	}
+
+	for (int i = 0;i < 12;i++)
+	{
+		if (GetKeyboardPress(DIK_I))
 		{
-			SetSeizaEffect((*seiza)->name, (*seiza)->star->pos + offsetPos[i], offsetScl[i]);
+			scl[i].y += 0.01f;
+		}
+		if (GetKeyboardPress(DIK_K))
+		{
+			scl[i].y -= 0.01f;
+		}
+		if (GetKeyboardPress(DIK_J))
+		{
+			scl[i].x -= 0.01f;
+		}
+		if (GetKeyboardPress(DIK_L))
+		{
+			scl[i].x += 0.01f;
 		}
 	}
 
+
+	for (int i = 0; i < SEIZAEFFECT_MAX; i++, seiza++)
+	{
+		//if (i == 1)
+		//{
+			//(*seiza)->isConnect = true;
+		//}
+
+		//int val;
+
+		if ((*seiza)->isConnect)
+		{
+			//if (!seizaEffectWk[i].use)
+			//{
+			//	for (int j = 0; j < 12; j++)
+			//	{
+			//		if (randam[j] == -1)
+			//		{
+			//			while (1)
+			//			{
+			//				val = rand() % 12;
+			//				if (randam[val] == -1)
+			//				{
+			//					seizaEffectWk[i].pos = posCom[val];
+			//					randam[val] = i;
+			//					break;
+			//				}
+			//			}
+			//			break;
+			//		}
+			//	}
+			//}
+			SetSeizaEffect((*seiza)->name, seizaEffectWk[i].pos, scl[i]);
+
+			//SetSeizaEffect((*seiza)->name, pos[i], scl[i]);
+		
+			//SetSeizaEffect((*seiza)->name, (*seiza)->star->pos + offsetPos[i], offsetScl[i]);
+			
+		}
+	}
+
+	PrintDebugProc("\n %d Effect: pos(%f,%f)  scl(%f,%f)\n", index, seizaEffectWk[index].pos.x, seizaEffectWk[index].pos.y, scl[index].x, scl[index].y);
 }
 
 //=============================================================================
@@ -374,7 +553,7 @@ void SetSeizaEffect(ZODIAC seiza,D3DXVECTOR3 pos, D3DXVECTOR3 scl)
 
 	if (seizaEffectWk[seiza].color.a < 0.2f)
 	{
-		seizaEffectWk[seiza].color.a = 0.2f;
+		seizaEffectWk[seiza].color.a = 0.2f;//0.2
 	}
 
 	//頂点に反映する
@@ -391,5 +570,10 @@ void DelSeizaEffect(int index)
 		seizaEffectWk[index].use = false;
 	}
 
+}
+
+SEIZAEFFECT* GetSeizaEffect(void)
+{
+	return seizaEffectWk;
 }
 

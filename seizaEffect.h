@@ -32,4 +32,6 @@ void DrawSeizaEffect(void);
 void SetSeizaEffect(ZODIAC seiza, D3DXVECTOR3 pos, D3DXVECTOR3 scl);
 
 void DelSeizaEffect(int index);
+
+SEIZAEFFECT* GetSeizaEffect(void);
 #endif

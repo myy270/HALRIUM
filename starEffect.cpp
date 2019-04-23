@@ -6,14 +6,14 @@
 //=============================================================================
 #include "starEffect.h"
 #include "input.h"
-
+#include "seiza.h"
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
 #define	TEXTURE_STAREFFECT		"data/TEXTURE/shadow000.jpg"	// 読み込むテクスチャファイル名
 
-#define	STAREFFECT_SIZE_X		(4.0f)						// ビルボードの幅
-#define	STAREFFECT_SIZE_Y		(4.0f)						// ビルボードの高さ
+#define	STAREFFECT_SIZE_X		(SIZE_STAR - 0.7f)						// ビルボードの幅
+#define	STAREFFECT_SIZE_Y		(SIZE_STAR - 0.7f)						// ビルボードの高さ
 #define STAREFFECT_MAX			(240)							//エフェクトの番号
 
 
