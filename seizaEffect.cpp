@@ -251,6 +251,7 @@ void UpdateSeizaEffect(void)
 
 	static int index = 0;
 
+#ifdef _DEBUG
 	if (GetKeyboardPress(DIK_0))
 	{
 		index = 0;
@@ -338,7 +339,7 @@ void UpdateSeizaEffect(void)
 			scl[i].x += 0.01f;
 		}
 	}
-
+#endif
 
 	for (int i = 0; i < SEIZAEFFECT_MAX; i++, seiza++)
 	{
