@@ -51,7 +51,7 @@ HRESULT InitGame(void)
 {
 	// タイマーの初期化
 	InitTimer();
-	ResetTimer(999);
+	ResetTimer(180);
 	{
 		InitAri();
 		InitTau();

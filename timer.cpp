@@ -125,10 +125,10 @@ void UpdateTimer(void)
 		}
 
 		if (clear)
-		{
-			//g_timeOut = 1;
+		{//全部の星座完成したら、リザルト画面へ
+			g_timeOut = 1;
 
-			//SetFade(FADE_OUT);
+			SetFade(FADE_OUT);
 
 		}
 	}
